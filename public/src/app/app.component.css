@@ -1,0 +1,10 @@
+.card{
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px;
+    margin: 6px 6px 0px 0px;
+}
+
+p {
+    color: white;
+}

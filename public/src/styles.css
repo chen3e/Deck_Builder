@@ -1,0 +1,22 @@
+#wrapper{
+    min-height: 100vh;
+    background-color: rgb(77, 77, 77);
+    background-image: url("https://img00.deviantart.net/8e77/i/2015/143/9/e/tasipurr_the_golden_paw_by_alradeck-d8ufbfx.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#top{
+    background-color: rgb(46, 46, 46);
+    padding: 10px;
+}
+#top > img{
+    width: 200px;
+}
+
+#top > *{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 25px;
+    color: rgb(226, 226, 226);
+}
