@@ -1,5 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<<<<<<< HEAD
 <form *ngIf="started===false" (submit)="chooseColor()">
+=======
+<form (submit)="chooseColor()">
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
   <select name="color" [(ngModel)]="params.colors" id="color">
     <option value="W">White</option>
     <option value="G">Green</option>
@@ -9,14 +13,24 @@
   </select>
   <input type="submit" value="Start!">
 </form>
+<<<<<<< HEAD
   <button *ngIf="choseColor===true" (click)="getLands()">Get Lands!</button>
   <button *ngIf="gotLands===true" (click)="getCreatures()">Get Creatures!</button>
   <button *ngIf="gotCreatures===true" (click)="getNonCreatures()">Get Non-Creatures!</button>
+=======
+  <button *ngIf="choseColor===true"(click)="getLands()">Get Lands!</button>
+  <button *ngIf="gotLands===true"(click)="getCreatures()">Get Creatures!</button>
+  <button *ngIf="gotCreatures===true"(click)="getNonCreatures()">Get Non-Creatures!</button>
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
   <div id="cardDisplay">
     <div class="card" *ngFor="let card of deck">
         <img src="{{ card.image_uris['small'] }}" alt="{{ card.name }}.png">
     </div>
   </div>
   <button (click)="restart()">Restart</button>
+<<<<<<< HEAD
   <p>Current price: ${{ getPrice() }}</p>
+=======
+
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
 <router-outlet></router-outlet>

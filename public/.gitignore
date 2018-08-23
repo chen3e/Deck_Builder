@@ -7,6 +7,10 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
+=======
+node_modules
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
 
 # IDEs and editors
 /.idea

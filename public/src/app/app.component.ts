@@ -14,22 +14,32 @@ export class AppComponent {
   nonCreatures = [];
   lands = [];
   deck = [];
+<<<<<<< HEAD
   deckPrice = 0;
 
   params = { 'colors': "", 'notColors': [] }
 
   started = false;
+=======
+
+  params = { 'colors': "" }
+
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
   choseColor = false;
   gotLands = false;
   gotCreatures = false;
   gotNonCreatures = false;
 
   ngOnInit(){
+<<<<<<< HEAD
     // THIS CODE WILL INITIALIZE YOUR DATABASE THE FIRST TIME YOU LOAD THIS UP. UNCOMMENT IT OUT AND LET IT RUN ONCE, THEN COMMMENT IT BACK OUT
+=======
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
     // let observable = this._httpService.allCards();
     // observable.subscribe(data => {
     //   console.log(data);
     // })
+<<<<<<< HEAD
   }
 
   getPrice(){
@@ -90,21 +100,41 @@ export class AppComponent {
 
       }
     })
+=======
+    this.deck = [];
+  }
+
+/*   group(){
+    for (var i = 0; i < this.deck.length; i++){
+
+    }
+  } */
+
+  chooseColor(){
+    this.choseColor = true;
+    console.log(this.params['color']);
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
   }
 
   getCreatures(){
     this.gotCreatures = true;
     this.gotLands = false;
+<<<<<<< HEAD
     console.log("This is params!", this.params);
+=======
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
     let observable = this._httpService.getCreatures(this.params);
     observable.subscribe(data => {
       this.creatures = data['data'];
       for (var i = 0; i < this.creatures.length; i++){
         this.deck.push(this.creatures[i]);
+<<<<<<< HEAD
         console.log("This is parseFloat", parseFloat(this.creatures[i]['usd']));
         this.deckPrice += parseFloat(this.creatures[i]['usd']);
         console.log("This is deckPrice", this.deckPrice);
 
+=======
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
         }
       })
     }
@@ -118,21 +148,44 @@ export class AppComponent {
       this.nonCreatures = data['data'];
       for (var i = 0; i < this.nonCreatures.length; i++){
         this.deck.push(this.nonCreatures[i]);
+<<<<<<< HEAD
         console.log("This is parseFloat", parseFloat(this.nonCreatures[i]['usd']));
         this.deckPrice += parseFloat(this.nonCreatures[i]['usd']);
         console.log("This is deckPrice", this.deckPrice);
+=======
+      }
+    })
+  }
+
+  getLands(){
+    this.gotLands = true;
+    this.choseColor = false;
+    let observable = this._httpService.getLands(this.params);
+    observable.subscribe(data => {
+      this.lands = data['data'];
+      for (var i = 0; i < this.lands.length; i++){
+        this.deck.push(this.lands[i]);
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
       }
     })
   }
 
   restart(){
+<<<<<<< HEAD
     this.started = false;
+=======
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
     this.choseColor = false;
     this.gotLands = false;
     this.gotCreatures = false;
     this.gotNonCreatures = false;
+<<<<<<< HEAD
     this.params = { 'colors': "", 'notColors': [] };
     this.deck = [];
     this.deckPrice = 0;
+=======
+    this.params = { 'colors': "" };
+    this.deck = [];
+>>>>>>> 028848d14fd7af72b503bae5567bcf2be2040839
   }
 }
