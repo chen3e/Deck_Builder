@@ -1,0 +1,22 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<form (submit)="chooseColor()">
+  <select name="color" [(ngModel)]="params.colors" id="color">
+    <option value="W">White</option>
+    <option value="G">Green</option>
+    <option value="U">Blue</option>
+    <option value="R">Red</option>
+    <option value="B">Black</option>
+  </select>
+  <input type="submit" value="Start!">
+</form>
+  <button *ngIf="choseColor===true"(click)="getLands()">Get Lands!</button>
+  <button *ngIf="gotLands===true"(click)="getCreatures()">Get Creatures!</button>
+  <button *ngIf="gotCreatures===true"(click)="getNonCreatures()">Get Non-Creatures!</button>
+  <div id="cardDisplay">
+    <div class="card" *ngFor="let card of deck">
+        <img src="{{ card.image_uris['small'] }}" alt="{{ card.name }}.png">
+    </div>
+  </div>
+  <button (click)="restart()">Restart</button>
+
+<router-outlet></router-outlet>
