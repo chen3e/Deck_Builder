@@ -65,7 +65,7 @@ app.get('/creature', (req, res) => {
 app.post('/creature', (req, res) => {
     console.log(req.body);
     var deck = [];
-    var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 1}]}, function(err, cards){
+    var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 1}]}, function(err, cards){
         if (err){
             console.log(err);
         }
@@ -73,7 +73,7 @@ app.post('/creature', (req, res) => {
             for (var i = 0; i < 3; i++){
                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
             }
-            var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 2}]}, function(err, cards){
+            var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 2}]}, function(err, cards){
                 if (err){
                     console.log(err);
                 }
@@ -81,7 +81,7 @@ app.post('/creature', (req, res) => {
                     for (var i = 0; i < 4; i++){
                         deck.push(cards[Math.floor(Math.random()*cards.length)]);
                     }
-                    var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 3}]}, function(err, cards){
+                    var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 3}]}, function(err, cards){
                         if (err){
                             console.log(err);
                         }
@@ -89,7 +89,7 @@ app.post('/creature', (req, res) => {
                             for (var i = 0; i < 4; i++){
                                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
                             }
-                            var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 4}]}, function(err, cards){
+                            var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 4}]}, function(err, cards){
                                 if (err){
                                     console.log(err);
                                 }
@@ -97,7 +97,7 @@ app.post('/creature', (req, res) => {
                                     for (var i = 0; i < 3; i++){
                                         deck.push(cards[Math.floor(Math.random()*cards.length)]);
                                     }
-                                    var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 5}]}, function(err, cards){
+                                    var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 5}]}, function(err, cards){
                                         if (err){
                                             console.log(err);
                                         }
@@ -105,7 +105,7 @@ app.post('/creature', (req, res) => {
                                             for (var i = 0; i < 2; i++){
                                                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
                                             }
-                                            var cards = Card.find({ $and: [req.body, {type_line: { $regex: 'Creature' }}, {cmc: 6}]}, function(err, cards){
+                                            var cards = Card.find({ $and: [{ colors: req.body['colors']}, { colors: { $nin: req.body['notColors'] } }, {type_line: { $regex: 'Creature' }}, {cmc: 6}]}, function(err, cards){
                                                 if (err){
                                                     console.log(err);
                                                 }
@@ -133,9 +133,10 @@ app.post('/creature', (req, res) => {
 })
 
 app.post('/noncreature', (req, res) => {
-    console.log(req.body)
+    console.log('This is req.body:', req.body)
     var deck = [];
-    var cards = Card.find({ $and: [req.body], cmc: 1, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+    var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 1 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
+    //var cards = Card.find({ $and: [req.body], cmc: 1, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
         if (err){
             console.log(err);
         }
@@ -143,7 +144,7 @@ app.post('/noncreature', (req, res) => {
             for (var i = 0; i < 4; i++){
                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
             }
-            var cards = Card.find({ $and: [req.body], cmc: 2, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+            var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 2 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
                 if (err){
                     console.log(err);
                 }
@@ -151,7 +152,7 @@ app.post('/noncreature', (req, res) => {
                     for (var i = 0; i < 4; i++){
                         deck.push(cards[Math.floor(Math.random()*cards.length)]);
                     }
-                    var cards = Card.find({ $and: [req.body], cmc: 3, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+                    var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 3 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
                         if (err){
                             console.log(err);
                         }
@@ -159,7 +160,7 @@ app.post('/noncreature', (req, res) => {
                             for (var i = 0; i < 4; i++){
                                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
                             }
-                            var cards = Card.find({ $and: [req.body], cmc: 4, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+                            var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 4 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
                                 if (err){
                                     console.log(err);
                                 }
@@ -167,7 +168,7 @@ app.post('/noncreature', (req, res) => {
                                     for (var i = 0; i < 3; i++){
                                         deck.push(cards[Math.floor(Math.random()*cards.length)]);
                                     }
-                                    var cards = Card.find({ $and: [req.body], cmc: 5, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+                                    var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 5 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
                                         if (err){
                                             console.log(err);
                                         }
@@ -175,7 +176,7 @@ app.post('/noncreature', (req, res) => {
                                             for (var i = 0; i < 2; i++){
                                                 deck.push(cards[Math.floor(Math.random()*cards.length)]);
                                             }
-                                            var cards = Card.find({ $and: [req.body], cmc: 6, type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } }, function(err, cards){
+                                            var cards = Card.find({ $and: [ { colors: req.body['colors'] }, { colors: { $nin: req.body['notColors'] } }, { cmc: 6 }, { type_line: { $regex: 'Sorcery|Enchantment|Instant|Planeswalker|Artifact' } } ] }, function(err, cards){
                                                 if (err){
                                                     console.log(err);
                                                 }
